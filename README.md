@@ -3,17 +3,21 @@
 ### __Steps__
 
 1. Create Chart
+
             $ helm create couponservicechart
             Creating couponservicechart
 
 
 2. Configure Image
+
  In values.yaml configure the image
+
                 image:
                   registry: docker.io
                   repository: bharatht19/couponservice
 
 3. Update deployment
+
 In values.yaml configure livenessprobe and readiness probe
         
          livenessProbe:
@@ -41,6 +45,7 @@ In service.yaml
         nodePort: {{ .Values.service.nodePort }}
         protocol: TCP
         name: tomcat
+        
 5. Add dependency
 
 Add dependencies in Chart.yaml
