@@ -49,7 +49,26 @@ Add dependencies in Chart.yaml
               - name: mysql
                 version: 11.1.2
                 repository: oci://registry-1.docker.io/bitnamicharts
-                
+
 6. Pass values
+
+To override the default values in the dependent chart -mysql configure values.yaml
+
+            mysql:
+                auth:
+                    rootPassword: test1234
+                    database: mydb
+                primary:
+                  service:
+                    type: NodePort
+                    nodePort: 32762
+                fullnameOverride: docker-mysql
+    
 7. Use Configmap
+
+Create a configmap with initdb script which will initialise the database when created with a table and data in the table.
+
+In values.yaml, provide one more value to be overridden
+
+
 8. Release and test
