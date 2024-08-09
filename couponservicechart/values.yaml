@@ -9,11 +9,11 @@ image:
   repository: bharatht19/couponservice
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "coupon-service"
 
 
 podAnnotations: {}
@@ -34,7 +34,7 @@ service:
   type: NodePort
   targetPort: 9091
   port: 9091
-  nodePort: 32716
+  nodePort: 32761
 
 ingress:
   enabled: false
@@ -106,6 +106,8 @@ mysql:
   primary:
     service:
       type: NodePort
+      targetPort: 3306
+      port: 3306
       nodePort: 32762
   fullnameOverride: docker-mysql
   initdbScriptsConfigMap: mysql-initdb-config
